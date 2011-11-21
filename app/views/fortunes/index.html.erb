@@ -1,0 +1,32 @@
+<% if current_user %>
+  Welcome <%= current_user.name %>!
+  <%= link_to "Sign Out", signout_path %>
+<% else %>
+  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+<% end %>
+
+
+<% title "All fortunes" %>
+<div id="paginator">
+  <%= paginate @fortunes, :remote => true %>
+</div>
+
+<div>
+<%= form_tag fortunes_path, :remote => true, :method => :get, :id => "fortunes_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>	
+</div>
+<p>&nbsp;</p>
+<div id="fortunes">
+  <%= render :partial => 'fortune', :collection => @fortunes %>
+</div>
+
+<p><%= link_to "New Fortune", new_fortune_path %></p>
+
+<div id="paginator">
+  <%= paginate @fortunes, :remote => true %>
+</div>
+

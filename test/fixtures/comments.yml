@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fortune: 
+   author: MyString
+  quotation: MyString
+
+two:
+  fortune: 
+   author: MyString
+  quotation: MyString

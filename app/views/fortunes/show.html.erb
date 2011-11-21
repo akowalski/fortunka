@@ -1,0 +1,30 @@
+<% title "Show fortune" %>
+
+<% if notice -%>
+<div id="notice"><%= notice %></div>
+<% end -%>
+
+<article class="single">
+  <div class="attribute">
+    <span class="name">Source</span>
+    <span class="value"><%= @fortune.source %></span>
+  </div>
+  <div class="attribute">
+    <span class="name">Quotation</span>
+    <span class="value"><%= @fortune.quotation %></span>
+  </div>
+
+<% if @fortune.comments.any? %>
+  <h2>Comments</h2>
+  <%= render :partial => 'comments/comment', :collection => @fortune.comments %>
+<% end %>
+
+<h2>Add new comment</h2>
+<%= render :partial => 'comments/form' %>
+
+
+  <div class="link">
+    <%= link_to 'Edit', edit_fortune_path(@fortune) %> |
+    <%= link_to 'Back', fortunes_path %>
+  </div>
+</article>
